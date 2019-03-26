@@ -1,20 +1,32 @@
-define( [ "qlik"
-],
-function ( qlik) {
+define( 
+	[
+		"qlik",
+		'text!./template.ng.html',
+		'text!./dialog-template.ng.html'
+	],
+	function ( qlik, template, dialogTemplate ) {
 
-	return {
-		support : {
-			snapshot: true,
-			export: true,
-			exportData : false
-		},
-		paint: function ($element) {
-			//add your rendering code here
-			$element.html( "leonardo_tutorial" );
-			//needed for export
-			return qlik.Promise.resolve();
-		}
-	};
+		return {
+			support : {
+				snapshot: true,
+				export: true,
+				exportData : false
+			},
+			template: template,
+			controller: ['$scope', 'luiDialog', function( $scope, luiDialog){
+				$scope.openDialog = function(){
+					luiDialog.show({
+						template: dialogTemplate,
+						input: {
+							name: $scope.name
+						},
+						controller: ['$scope', function($scope){
+							$scope.text = 'Hello world'
+						}]
+					})
+				}
+			}]
+		};
 
 } );
 

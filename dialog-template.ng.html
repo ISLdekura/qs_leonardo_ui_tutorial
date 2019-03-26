@@ -1,0 +1,18 @@
+<lui-dialog style="max-width: 450px;">
+    <lui-dialog-header>
+        <lui-dialog-title>My dialog</lui-dialog-title>
+    </lui-dialog-header>
+    <lui-dialog-body>
+        Hello, <i>{{ input.name || "missing name" }}</i>!
+
+        <div style="margin-top: 10px;">
+            <b>tip</b>
+        </div>
+        <div style="margin-top: 5px;">
+            {{ text }}
+        </div>
+    </lui-dialog-body>
+    <lui-dialog-footer>
+        <button class="lui-button lui-dialog_footer_button" ng-click="close();">Close</button>
+    </lui-dialog-footer>
+</lui-dialog>
